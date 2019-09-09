@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  api:
+    build: .
+    container_name: bemobi_api
+    network_mode: host
+  mongo:
+    image: mongo:3.4
+    container_name: bemobi_mongo
+    network_mode: host
+    volumes:
+      - data_volume:/data/db
+
+volumes:
+  data_volume:
+    driver: local

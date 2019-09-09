@@ -1,0 +1,6 @@
+Dockerfile
+docker-compose.yml
+vendor
+.idea
+.git
+Gopkg.lock
