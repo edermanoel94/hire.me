@@ -1,5 +1,9 @@
 # Bemobi
 
+## Client:
+
+- index.html
+
 ## Prerequisites:
 - GNU Make
 - Docker 19.03++
