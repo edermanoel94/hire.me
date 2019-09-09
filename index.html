@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<div id="app" class="container" style="margin-top: 20px;">
+    <h1></h1>
+    <div class="row">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="URL">@</span>
+            </div>
+            <input v-model="url" type="text" class="form-control" placeholder="URL" aria-label="URL"
+                   aria-describedby="URL">
+            <input type="text" aria-label="ALIAS" placeholder="ALIAS" class="form-control" v-model="alias">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="shortenerUrl">
+                    Shortener
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="error" class="alert alert-danger" role="alert">
+        <b>Alias: </b> {{error.alias}} <br/>
+        <b>{{error.errCode}}:</b> {{error.description}}
+    </div>
+
+    <div v-if="success" class="alert alert-success" role="alert">
+        <b>{{success.alias}}</b> <br/>
+        <a :href="success.short" target="_blank">{{success.short}}</a>
+    </div>
+
+    <h1>Links mais visitados</h1>
+    <ul>
+        <li v-for="url in urls">
+            <a :href="url.short">{{url.visited}} - {{url.short}}</a>
+        </li>
+    </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    const baseUrl = "http://localhost:8080";
+
+    new Vue({
+        el: '#app',
+        data: {
+            urls: [],
+            url: "",
+            alias: "",
+            error: null,
+            success: null
+        },
+        methods: {
+            async shortenerUrl(evt) {
+                this.error = null;
+                this.success = null;
+                try {
+                    let response = await axios.post(`${baseUrl}/create?url=${this.url}&CUSTOM_ALIAS=${this.alias}`);
+                    this.success = response.data;
+                } catch (e) {
+                    let response = e.response;
+                    this.error = {
+                        alias: response.data.alias,
+                        description: response.data.description,
+                        errCode: response.data.err_code,
+                    }
+                }
+            },
+            async moreVisited() {
+                return await axios.get(`${baseUrl}/moreVisited`);
+            },
+            async retrieveUrl(code) {
+                return await axios.get(`${baseUrl}/${code}`);
+            }
+        },
+        async created() {
+            let response = await this.moreVisited();
+            this.urls = response.data;
+        }
+    });
+</script>
+</body>
+</html>
