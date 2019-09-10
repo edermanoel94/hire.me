@@ -6,6 +6,3 @@ run:
 
 down:
 	docker-compose down
-
-test:
-	docker-compose run api go test -v ./...

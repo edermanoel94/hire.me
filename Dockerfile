@@ -10,4 +10,6 @@ RUN dep ensure
 
 RUN go build -o api .
 
+RUN go test -v ./...
+
 CMD ["./api"]
