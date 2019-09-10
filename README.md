@@ -39,7 +39,7 @@ $ make test
 
 ### Shortener URL
 ```
-    GET http://<APP_HOST>:<APP_PORT>/create?url=<string>&[CUSTOM_ALIAS}
+    POST http://<APP_HOST>:<APP_PORT>/create?url=<string>&[CUSTOM_ALIAS}
 ```
 
 ---
