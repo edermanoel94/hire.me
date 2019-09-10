@@ -5,6 +5,7 @@ services:
     build: .
     container_name: bemobi_api
     network_mode: host
+    env_file: ./.env
   mongo:
     image: mongo:3.4
     container_name: bemobi_mongo

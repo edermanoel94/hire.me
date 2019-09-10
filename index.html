@@ -75,13 +75,20 @@
                     }
                 }
             },
-            async moreVisited() {
-                return await axios.get(`${baseUrl}/moreVisited`);
-            }
         },
         async created() {
-            let response = await this.moreVisited();
-            this.urls = response.data;
+            try {
+                let response = await axios.get(`${baseUrl}/moreVisited`);
+                this.urls = response.data;
+            } catch (e) {
+                    let response = e.response;
+                    this.error = {
+                        alias: response.data.alias,
+                        description: response.data.description,
+                        errCode: response.data.err_code,
+                    }
+            }
+            
         }
     });
 </script>

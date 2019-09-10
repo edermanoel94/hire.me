@@ -4,3 +4,8 @@ vendor
 .idea
 .git
 Gopkg.lock
+Makefile
+index.html
+README.md
+.gitignore
+.env

@@ -6,7 +6,6 @@ import (
 	"desafio_bemobi/model"
 	"github.com/edermanoel94/rest-go"
 	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
 	"github.com/stretchr/testify/assert"
 	"log"
 	"net/http"
@@ -18,13 +17,6 @@ import (
 var (
 	logger = log.New(os.Stdout, "bemobi_test: ", log.Lshortfile|log.LstdFlags|log.Ltime)
 )
-
-func init() {
-	err := godotenv.Load("../.env")
-	if err != nil {
-		log.Fatal(err)
-	}
-}
 
 func TestHandler_ShortURLHandler(t *testing.T) {
 

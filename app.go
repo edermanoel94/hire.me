@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/globalsign/mgo"
 	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
 	"github.com/rs/cors"
 	"log"
 	"net/http"
@@ -18,16 +17,6 @@ var (
 	logStderr = log.New(os.Stderr, "bemobi_error: ", log.Lshortfile|log.LstdFlags|log.Ltime)
 	logStdout = log.New(os.Stdout, "bemobi: ", log.Lshortfile|log.LstdFlags|log.Ltime)
 )
-
-func init() {
-
-	err := godotenv.Load()
-
-	if err != nil {
-		log.Fatalf("couldn't load the .env file: %v", err)
-	}
-
-}
 
 func main() {
 
