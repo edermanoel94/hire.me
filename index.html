@@ -75,20 +75,22 @@
                     }
                 }
             },
-        },
-        async created() {
-            try {
-                let response = await axios.get(`${baseUrl}/moreVisited`);
-                this.urls = response.data;
-            } catch (e) {
+            async moreVisited() {
+                try {
+                    let response = await axios.get(`${baseUrl}/moreVisited`);
+                    this.urls = response.data;
+                } catch (e) {
                     let response = e.response;
                     this.error = {
                         alias: response.data.alias,
                         description: response.data.description,
                         errCode: response.data.err_code,
                     }
-            }
-            
+                }
+            },
+        },
+        mounted() {
+            setTimeout(this.moreVisited, 3000);
         }
     });
 </script>

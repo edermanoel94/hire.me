@@ -41,17 +41,17 @@ $ make test
 
 ### Shortener URL:
 ```
-    POST http://<APP_HOST>:<APP_PORT>/create?url=<string>&[CUSTOM_ALIAS}
+POST http://<APP_HOST>:<APP_PORT>/create?url=<string>&[CUSTOM_ALIAS}
 ```
 
 ---
 ### Retrieve URL
 ```
-    GET http://<APP_HOST>:<APP_PORT>/{alias}
+GET http://<APP_HOST>:<APP_PORT>/{alias}
 ```
 
 ---
 ### MoreVisited
 ```
-    GET http://<APP_HOST>:<APP_PORT>/moreVisited
+GET http://<APP_HOST>:<APP_PORT>/moreVisited
 ```
