@@ -2,12 +2,12 @@
 
 ## Client:
 
-- index.html
+- index.html (Vuejs, Axios and Bootstrap 4)
 
 ## Prerequisites:
 - GNU Make
 - Docker 19.03++
-- docker-compose 1.23.2++
+- docker-compose 1.23++
 
 ---
 ## Enviroment:
@@ -27,7 +27,7 @@ MONGODB_PASS=
 $ make build
 ```
 
-## Run application:
+## Run:
 ```
 $ make run
 ```
@@ -37,7 +37,9 @@ $ make run
 $ make test
 ```
 
-### Shortener URL
+## Documentation:
+
+### Shortener URL:
 ```
     POST http://<APP_HOST>:<APP_PORT>/create?url=<string>&[CUSTOM_ALIAS}
 ```
