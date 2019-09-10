@@ -32,11 +32,6 @@ $ make build
 $ make run
 ```
 
-## Test:
-```
-$ make test
-```
-
 ## Documentation:
 
 ### Shortener URL:
