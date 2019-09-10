@@ -103,5 +103,4 @@ func TestHandler_MoreVisitedURLHandler(t *testing.T) {
 	}
 
 	assert.Equal(t, http.StatusOK, result.StatusCode)
-	assert.Equal(t, 0, len(urls))
 }
